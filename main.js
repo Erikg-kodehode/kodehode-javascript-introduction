@@ -17,8 +17,8 @@ Read the terminal output before and after to see the difference
 export function start() {
   //your code here
   // return true
+  return true;
 };
-
 /******************************************************************************
 1.
 
@@ -31,8 +31,13 @@ received is an even number.
 HINT: Use the modulo operator (%) Google it! 😊
 ******************************************************************************/
 
-export const oddOrEven = () => {
+export const oddOrEven = (number) => {
   //your code here
+  if (number % 2 === 0) {
+    return "Even";
+} else {
+    return "Odd";
+}
 };
 
 /******************************************************************************
@@ -47,9 +52,11 @@ Example: "This is cool" should return "THIS IS COOL!"
 
 ******************************************************************************/
 
-export function makeMeLoud() {
+export function makeMeLoud(str) {
   //your code here
-}
+    return str.toUpperCase() + "!";
+
+  }
 
 /******************************************************************************
 3.
@@ -72,8 +79,20 @@ The function should return:
 
 ******************************************************************************/
 
-export const greeter = () => {
+export const greeter = (name, hour) => {
   //your code here
+  if (hour < 0 || hour > 23) {
+    return "Invalid time";
+}
+if (hour <= 5) {
+    return `Good night ${name}`;
+} else if (hour <= 11) {
+    return `Good morning ${name}`;
+} else if (hour <= 17) {
+    return `Good day ${name}`;
+} else {
+    return `Good evening ${name}`;
+}
 };
 
 /******************************************************************************
@@ -90,8 +109,9 @@ Example 2: ["One", "Two", "Three", "Four", "Five", "Six"] should return
 ["Two", "Three", "Four", "Five"]
 ******************************************************************************/
 
-export function arrayTrimmer() {
+export function arrayTrimmer(array) {
   //your code here
+  return array.slice(1, -1);
 }
 
 /******************************************************************************
@@ -113,8 +133,9 @@ Example3: "   hard        " should return "fun"
 
 ******************************************************************************/
 
-export const cleanAndFun = () => {
+export const cleanAndFun = (text) => {
   //your code here
+  return text.replace("hard", "fun").trim();
 };
 
 /******************************************************************************
@@ -137,9 +158,14 @@ Use array methods to do the following:
  Return the resulting array.
 ******************************************************************************/
 
-export function marvelEditor() {
+export function marvelEditor(array) {
   //your code here
-}
+    array.shift();
+    array.splice ( 2, 1, "Skrull")
+    array.splice ( 0, 2, "Captain America")
+  return array.join("💪");
+
+  }
 
 /******************************************************************************
 7.
@@ -168,10 +194,19 @@ Return "😎Primitive values only😎"
 
 ******************************************************************************/
 
-export function coolMaker() {
-  //your code here
-}
 
+export function coolMaker(input) {
+  //your code here
+  if (typeof input === "string") {
+    return `😎${input}😎`;
+} else if (typeof input === "number") {
+    return `😎${input * 2}😎`;
+} else if (typeof input === "boolean") {
+    return input ? "😎Yeah😎" : "😎Chill😎";
+} else {
+    return "😎Primitive values only😎";
+}
+}
 /******************************************************************************
 8.
 
@@ -195,6 +230,13 @@ Example3: (["One", "Two", "Three"], "Four") --> ["One", "Two", "Three", "Four"]
 Example4: (["One", "Two", "Three"], "Two") --> ["One", "Three"]
 ******************************************************************************/
 
-export const addOrRemove = () => {
+  export const addOrRemove = (array, string) => {
   //your code here
-};
+    const index = array.indexOf(string);
+    if (index !== -1) {
+      array.splice(index, 1);
+    } else {
+      array.push(string);
+    }
+    return array;
+  };
